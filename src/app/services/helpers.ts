@@ -1,4 +1,4 @@
-import {keyword, rgb } from "color-convert";
+import { keyword, rgb } from "color-convert";
 import { KEYWORD, RGB } from "color-convert/conversions";
 import namer from 'color-namer';
 import { Question } from "../models/question.model";
@@ -26,19 +26,19 @@ export function randomItems<T>(items: T[], count: number): T[] {
 }
 
 const KNOWN_COLORS: KEYWORD[] = [
-    'red', 
-    'blue', 
-    'green', 
-    'yellow', 
-    'orange', 
-    'purple', 
-    'magenta', 
-    'cyan', 
-    'gray', 
-    'brown', 
-    'teal', 
-    'gold', 
-    'lime', 
+    'red',
+    'blue',
+    'green',
+    'yellow',
+    'orange',
+    'purple',
+    'magenta',
+    'cyan',
+    'gray',
+    'brown',
+    'teal',
+    'gold',
+    'lime',
     'tomato'
 ];
 
@@ -70,8 +70,8 @@ export function randomColorQuestion() {
     answers[correctIndex] = name;
 
     const question: Question = {
-        caption: colors, 
-        answers, 
+        caption: colors,
+        answers,
         correctIndex
     };
     return question;
@@ -79,7 +79,7 @@ export function randomColorQuestion() {
 
 export function randomColorQuiz() {
     return Array.from({
-        length: randomNumber(6, 20), 
+        length: randomNumber(6, 20),
     }).map(_ => randomColorQuestion());
 }
 
@@ -123,9 +123,19 @@ export function getColorDisplayNameMap() {
         "WhiteSmoke", "Yellow", "YellowGreen"
     ];
 
-    return Object.fromEntries(htmlColors.map(clr => [clr.toLowerCase(), splitCamelCase(clr)]));    
+    return Object.fromEntries(htmlColors.map(clr => [clr.toLowerCase(), splitCamelCase(clr)]));
 }
 
 export function displayNameOfColor(color: string) {
     return COLOR_DISPLAY_NAMES[color.toLowerCase()];
+}
+
+export function checkAnswers(answers: number[], questions: Question[]) {
+    let points = 0
+    for (let i = 0; i < answers.length - 1; i++) {
+        if (answers[i] === questions[i].correctIndex) {
+            points++
+        }
+    }
+    return points
 }

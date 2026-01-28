@@ -9,7 +9,7 @@ import { QuestionPresenterComponent } from "./components/question-presenter/ques
 
 @Component({
   selector: 'app-root',
-  imports: [SharedModule, QuestionPresenterComponent, ToolbarComponent, ProgressComponent],
+  imports: [SharedModule, QuestionPresenterComponent, ToolbarComponent, ProgressComponent, DoneComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
