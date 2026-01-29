@@ -133,7 +133,7 @@ export function displayNameOfColor(color: string) {
 export function checkAnswers(answers: number[], questions: Question[]) {
     let points = 0
     for (let i = 0; i < answers.length - 1; i++) {
-        if (answers[i] === questions[i].correctIndex) {
+        if ((questions.length > i) && answers[i] === questions[i].correctIndex) {
             points++
         }
     }
